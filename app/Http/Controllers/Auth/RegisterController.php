@@ -43,11 +43,11 @@ class RegisterController extends Controller
         if($request->isMethod('post')){
 
             //バリデーション追加
-            $request->validate([
-                'username' => 'required|between:2,12',
-                'mail' => 'required|email:filter|unique:users,mail|between:5,40',
-                'password' => 'required|alpha_num'
-            ]);
+            // $request->validate([
+            //     'username' => 'required|between:2,12',
+            //     'mail' => 'required|email:filter|unique:users,mail|between:5,40',
+            //     'password' => 'required|alpha_num|between:8,20',
+            // ]);
 
             $username = $request->input('username');
             $mail = $request->input('mail');
