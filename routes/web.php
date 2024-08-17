@@ -30,19 +30,20 @@ Route::get('/added', 'Auth\RegisterController@added');
 //Route::post('/added', 'Auth\RegisterController@added');
 
 //ログイン中のページ
-// Route::get('/top','PostsController@index');
-//上記だとエラーが出たのでpostに変更
-//ミドルウェアグループ追記　コメントアウト外してしまうとルーティングが機能しなくなる
-// Route::group(['middleware' => 'auth'], function(){
+Route::get('/top','PostsController@index'); //ホーム画面表示
 
-Route::get('/top','PostsController@index');
+Route::get('/profile','UsersController@profile'); //ユーザープロフィール画面表示
 
-Route::get('/profile','UsersController@profile');
+Route::get('/search','UsersController@search'); //検索画面表示兼検索機能
 
-Route::get('/search','UsersController@index'); //検索画面表示兼検索機能
+Route::get('/follow-list','FollowsController@followList'); //フォローリスト画面表示
 
-Route::get('/follow-list','PostsController@index');
+Route::get('/follower-list','FollowsController@followerList'); //フォロワーリスト画面表示
 
-Route::get('/follower-list','PostsController@index');
+Route::get('/logout', function () {
+      return view('auth.login');
+});  //ヘッダーログアウト機能(authのlogin.blade.php(viwe)を呼び出しますよ。というルート)
 
+// Route::group(['middleware' => 'auth'],function(){
+//   Route::get('/logout', 'Controller@')->name('logout');
 // });
