@@ -29,21 +29,21 @@ Route::post('/register', 'Auth\RegisterController@register'); //情報を登録�
 Route::get('/added', 'Auth\RegisterController@added');
 //Route::post('/added', 'Auth\RegisterController@added');
 
-//ログイン中のページ
-Route::get('/top','PostsController@index'); //ホーム画面表示
 
-Route::get('/profile','UsersController@profile'); //ユーザープロフィール画面表示
+// Route::get('/login', function () {
+  //       return view('auth.login');
+  // });  //ヘッダーログアウト機能(authのlogin.blade.php(viwe)を呼び出しますよ。というルート)
 
-Route::get('/search','UsersController@search'); //検索画面表示兼検索機能
+  Route::group(['middleware' => 'auth'],function(){
+    Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+    //ログイン中のページ
+    Route::get('/top','PostsController@index'); //ホーム画面表示
 
-Route::get('/follow-list','FollowsController@followList'); //フォローリスト画面表示
+    Route::get('/profile','UsersController@profile'); //ユーザープロフィール画面表示
 
-Route::get('/follower-list','FollowsController@followerList'); //フォロワーリスト画面表示
+    Route::get('/search','UsersController@search'); //検索画面表示兼検索機能
 
-Route::get('/logout', function () {
-      return view('auth.login');
-});  //ヘッダーログアウト機能(authのlogin.blade.php(viwe)を呼び出しますよ。というルート)
+    Route::get('/follow-list','FollowsController@followList'); //フォローリスト画面表示
 
-// Route::group(['middleware' => 'auth'],function(){
-//   Route::get('/logout', 'Controller@')->name('logout');
-// });
+    Route::get('/follower-list','FollowsController@followerList'); //フォロワーリスト画面表示
+  });
