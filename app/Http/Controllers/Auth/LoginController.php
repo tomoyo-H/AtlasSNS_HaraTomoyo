@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/top'; //homeからtopへ変更
 
     /**
      * Create a new controller instance.
@@ -49,12 +49,12 @@ class LoginController extends Controller
                 return redirect('/top');
             }
         }
-        return view("auth.login");
+        return view("auth.login"); //ファイル名
     }
 
     //ログアウト機能用のメソッド
     public function logout(Request $request){
         Auth::logout();
-        return redirect('/login');
+        return redirect('/login'); //URL名
     }
 }

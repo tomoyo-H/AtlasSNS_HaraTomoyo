@@ -20,7 +20,7 @@
 
 
 //ログアウト中のページ
-Route::get('/login', 'Auth\LoginController@login'); //ログイン画面の表示
+Route::get('/login', 'Auth\LoginController@login')->name('login'); //ログイン画面の表示
 Route::post('/login', 'Auth\LoginController@login'); //ログイン処理を行うURL
 
 Route::get('/register', 'Auth\RegisterController@register'); //新規登録の画面表示用
