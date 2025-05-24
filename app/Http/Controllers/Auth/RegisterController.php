@@ -40,11 +40,17 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request){
-        if($request->isMethod('post')){
+        if($request->isMethod('post')){//postで送ったときに動くif文
 
             $username = $request->input('username');
             $mail = $request->input('mail');
             $password = $request->input('password');
+            //バリデーション
+            $validated = $request->validate([
+                'username' => 'required|min:2|max:12',
+                'mail' => 'required|min:5|max:40|unique:users,mail|email',
+                'password' => 'required|confirmed|Rules\Password::defaults()',
+            ]);
 
             //新規登録の機能
             User::create([
@@ -56,21 +62,6 @@ class RegisterController extends Controller
             return redirect('/added');
         }
         return view('auth.register');
-    }
-    //バリデーション
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-                'username' => 'required|min:2|max:12',
-                'mail' => 'required||min:5|max:40|unique:users,mail|email',
-                'password' => 'required|confirmed|Rules\Password::defaults()',
-            ]);
-            // ユーザー作成
-            User::create([
-                'username' => $username,
-                'mail' => $mail,
-                'password' => $password,
-            ]);
     }
 
     //登録後の名前表示機能
