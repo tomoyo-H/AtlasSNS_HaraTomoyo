@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
     <title></title>
-    <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }} "> <!--assetはLaravelにおいてフォルダ内に入っているデータであればどこにあっても引っ張ってくるよという設定-->
     <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -25,8 +25,13 @@
         <h1><a href="/top"><img src="{{ asset('images/atlas.png') }} "></a></h1>
             <div id="">
                 <div id="">
-                    <p>〇〇さん<img src="images/arrow.png"></p>
-                <div>
+                    <!-- アコーディオンメニュー -->
+                <section class="accordion">
+                        <input id="block-01" type="checkbox" class="toggle">
+                        <label class="Label" for="block-01">
+                             <p>〇〇さん<img src="images/arrow.png"></p>
+                        </label>
+            <div class="content">
                 <ul>
                     <li><a href="/top">ホーム</a></li>
                     <li><a href="/profile">プロフィール</a></li>

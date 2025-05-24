@@ -42,18 +42,11 @@ class RegisterController extends Controller
     public function register(Request $request){
         if($request->isMethod('post')){
 
-            //バリデーション追加
-            // $request->validate([
-            //     'username' => 'required|between:2,12',
-            //     'mail' => 'required|email:filter|unique:users,mail|between:5,40',
-            //     'password' => 'required|alpha_num|between:8,20',
-            // ]);
-
             $username = $request->input('username');
             $mail = $request->input('mail');
             $password = $request->input('password');
 
-            //新規登録の機能追加
+            //新規登録の機能
             User::create([
                 'username' => $username,
                 'mail' => $mail,
@@ -64,10 +57,26 @@ class RegisterController extends Controller
         }
         return view('auth.register');
     }
+    //バリデーション
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+                'username' => 'required|min:2|max:12',
+                'mail' => 'required||min:5|max:40|unique:users,mail|email',
+                'password' => 'required|confirmed|Rules\Password::defaults()',
+            ]);
+            // ユーザー作成
+            User::create([
+                'username' => $username,
+                'mail' => $mail,
+                'password' => $password,
+            ]);
+    }
 
-    //登録後の名前表示機能追加
+    //登録後の名前表示機能
     public function added(Request $request){
         $username = $request->input('username');
         return view('auth.added', ['username'=>$username]);
     }
+
 }

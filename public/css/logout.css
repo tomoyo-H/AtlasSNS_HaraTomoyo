@@ -1,10 +1,29 @@
 @charset "UTF-8";
 
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
     height: 100%;
-    background: #186AC9;
+    /* background: #186AC9; 元の表記*/
+    /*↓背景のグラデーション*/
+    background-image: linear-gradient(to bottom, #1e90ff, #ffff00);
 }
+
+/* 中央寄せ */
+section {
+    color: white;
+    /* background-color: #ccd8ff; */
+    background-color: rgba(255, 255, 255, 0.562);
+    padding: 50px 0;
+}
+
+div {
+    width: 100px;
+    height: 100px;
+    /* background-color: #4773ff; */
+    margin: 0 auto;
+}
+
+/* ここまで */
