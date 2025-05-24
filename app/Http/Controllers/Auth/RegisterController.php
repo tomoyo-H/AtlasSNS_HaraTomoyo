@@ -49,7 +49,7 @@ class RegisterController extends Controller
             $validated = $request->validate([
                 'username' => 'required|min:2|max:12',
                 'mail' => 'required|min:5|max:40|unique:users,mail|email',
-                'password' => 'required|confirmed|Rules\Password::defaults()',
+                'password' => 'required|string|alpha_num|min:8|max:20|confirmed',
             ]);
 
             //新規登録の機能
