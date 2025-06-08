@@ -30,7 +30,7 @@ Route::get('/register', 'Auth\RegisterController@register');
 //情報を登録処理する
 Route::post('/register', 'Auth\RegisterController@register');
 Route::get('/added', 'Auth\RegisterController@added');
-//Route::post('/added', 'Auth\RegisterController@added');
+// Route::post('/added', 'Auth\RegisterController@added');
 
 
 // Route::get('/login', function () {

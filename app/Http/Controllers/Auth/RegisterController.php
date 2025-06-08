@@ -40,7 +40,7 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request){
-        if($request->isMethod('post')){//postで送ったときに動くif文
+        if($request->isMethod('post')){//registerメソッドでPOST送信した時に動くif文
 
             $username = $request->input('username');
             $mail = $request->input('mail');
@@ -59,14 +59,17 @@ class RegisterController extends Controller
                 'password' => bcrypt($password),
             ]);
 
+            // セッションに保存
+            session(['username' => $username]);
             return redirect('/added');
         }
         return view('auth.register');
     }
 
     //登録後の名前表示機能
-    public function added(Request $request){
-        $username = $request->input('username');
+    public function added()
+    {
+        $username = session()->pull('username');//ッションを一度だけ使う方法
         return view('auth.added', ['username'=>$username]);
     }
 
