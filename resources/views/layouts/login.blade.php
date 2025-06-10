@@ -29,7 +29,7 @@
                 <section class="accordion">
                         <input id="block-01" type="checkbox" class="toggle">
                         <label class="Label" for="block-01">
-                             <p>〇〇さん<img src="images/arrow.png"></p>
+                             <p>{{ Auth::user()->username }}さん<img src="images/arrow.png"></?php>
                         </label>
             <div class="content">
                 <ul>

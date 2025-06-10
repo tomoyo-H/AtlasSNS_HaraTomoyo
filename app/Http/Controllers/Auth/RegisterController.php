@@ -69,7 +69,7 @@ class RegisterController extends Controller
     //登録後の名前表示機能
     public function added()
     {
-        $username = session()->pull('username');//ッションを一度だけ使う方法
+        $username = session()->pull('username');//セッションを一度だけ使う方法
         return view('auth.added', ['username'=>$username]);
     }
 
