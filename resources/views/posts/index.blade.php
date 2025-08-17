@@ -4,8 +4,7 @@
 
 <div class="container">
 
-          <!-- 下記のForm::Closeまで内容修正必要！ -->
-        {{ Form::open(['url' => '/posts/index']) }}
+        {{ Form::open(['url' => '/posts']) }}
         <div class="form-group">
           <!--ユーザーアイコン-->
             <img src="{{ asset('images/icon1.png') }}" style="width: 40px; height: 40px;">
