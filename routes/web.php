@@ -50,4 +50,10 @@ Route::get('/added', 'Auth\RegisterController@added');
     Route::get('/follow-list','FollowsController@followList');
     //フォロワーリスト画面表示
     Route::get('/follower-list','FollowsController@followerList');
+
+    //投稿フォーム
+    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
+
   });
