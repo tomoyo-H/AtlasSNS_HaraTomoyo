@@ -14,7 +14,7 @@
 
     <hr>
 
-    <!-- 検索結果  -->
+    <!-- 検索結果  ※要修正※　-->
     @if($users->count())
         <ul>
             @foreach($users as $user)
