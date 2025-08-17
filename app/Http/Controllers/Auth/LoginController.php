@@ -52,6 +52,15 @@ class LoginController extends Controller
         return view("auth.login"); //ファイル名
     }
 
+    //フォロー、フォロワー数の取得
+    public function count($id){
+        $user = User::findOrFail($id);
+        $followingsCount = $user->followings()->count(); // フォロー数
+        $followersCount = $user->followers()->count();   // フォロワー数
+        return view("auth.login", compact('user', 'followingsCount', 'followersCount'));
+    }
+
+
     //ログアウト機能用のメソッド
     public function logout(Request $request){
         Auth::logout();
