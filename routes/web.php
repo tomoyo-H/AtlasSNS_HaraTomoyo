@@ -58,4 +58,8 @@ Route::get('/added', 'Auth\RegisterController@added');
     // 検索フォーム表示 & 検索結果表示
     Route::get('/users/search', 'UserController@search')->name('users.search');
 
+    //ユーザープロフィール編集
+    Route::get('/profile/edit', [UsersController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [UsersController::class, 'update'])->name('profile.update');
+
   });
