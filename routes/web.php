@@ -52,8 +52,11 @@ Route::get('/added', 'Auth\RegisterController@added');
     Route::get('/follower-list','FollowsController@followerList');
 
     //投稿フォーム
-    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    // Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+    Route::get('/posts/create', 'PostsController@create')->name('posts.create');
+    // Route::post('/posts', [PostController::class, 'store']) ->name('posts.store');
+    Route::post('/posts', 'PostsController@store')->name('posts.store');
+
 
     // 検索フォーム表示 & 検索結果表示
     Route::get('/users/search', 'UserController@search')->name('users.search');
